@@ -28,23 +28,20 @@ GPIO.setup(FAN_PIN, GPIO.OUT)
 TEMP_THRESHOLD = 23
 gpio=17
 sensor=Adafruit_DHT.DHT11
-
-while True:
-    humidity, temp = Adafruit_DHT.read_retry(sensor, gpio) #Get temperature and humidity from sensor
-    sleep(5) #in seconds
-    print(temp)
-    if temp > TEMP_THRESHOLD: #Checking if temperature is greater than threshold
-            GPIO.output(FAN_PIN, GPIO.HIGH) #Switch on the fan if true
-            print("FAN ON...")
-    else:
-            GPIO.output(FAN_PIN, GPIO.LOW) #switch of the fan if false
-            print("FAN OFF...")
-'''
 try:
-    except KeyboardInterrupt:
-finally:
-    GPIO.cleanup()
-        print ("Done")   
-'''
-    
-    
+    while True:
+        temp - Adafruit_DHT.read_retry(sensor, gpio)
+        sleep(5)
+        print(temp)
+        
+        if temp > TEMP_THRESHOLD:
+            GPIO.output(FAN_PIN, GPIO.HIGH)
+            print("FAN ON...")
+
+        else:
+            GPIO.output(FAN_PIN, GPIO.LOW)
+            print("FAN OFF...")
+except KeyboardInterrupt:
+        GPIO.cleanup()
+        print("Switching Fan OFF...\nCleaning GPIO...\n*** \n***")
+print( "Done!")
